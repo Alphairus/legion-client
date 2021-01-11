@@ -11,7 +11,7 @@ const signUp = function (data) {
 }
 
 // API call for sign-in
-const signIn = function (data) {
+const signIn = function (data, textStatus, signUpData) {
     return $.ajax({
       url: config.apiUrl + '/sign-in',
       method: 'POST',

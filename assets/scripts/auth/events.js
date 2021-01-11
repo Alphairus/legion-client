@@ -1,114 +1,100 @@
-'use strict';
+'use strict'
 
-const config = require('../config');
-const store = require('../store');
+const getFormFields = require('../../../lib/get-form-fields')
+const api = require('./api')
+const ui = require('./ui')
 
-const signUp = function (data) {
-  return $.ajax({
-    url: config.apiOrigin + '/sign-up',
-    method: 'POST',
-    data,
-  });
-};
+// event handlers for...
+const addHandlers = function () {
+  // auth-related buttons
+  $('#signup-form').on('submit', onSignUp)
+  $('#signin-form').on('submit', onSignIn)
+  $('#change-password-form').on('submit', onChangePassword)
+  $('.sign-out').on('click', onSignOut)
+  // clicking out of a modal
+  $('button[data-dismiss]').on('click', ui.clearAuthForms)
+}
 
-const signIn = function (data) {
-  return $.ajax({
-    url: config.apiOrigin + '/sign-in',
-    method: 'POST',
-    data,
-  });
-};
+// SIGN UP expected responses:
+// * successful: JSON as follows...
+// {
+//   "user": {
+//     "id": 1,
+//     "email": "an@example.email"
+//   }
+// }
+// * unsuccessful, HTTP Status of 400 Bad Request (empty body)
 
-const changePassword = function (data) {
-  return $.ajax({
-    url: `${config.apiOrigin}/change-password/${store.user.id}`,
-    method: 'PATCH',
-    headers: {
-      "Authorization": `Token token=${store.user.token}`
-    },
-    data,
-  });
-};
-
-const signOut = function () {
-  return $.ajax({
-    url: `${config.apiOrigin}/sign-out/${store.user.id}`,
-    method: 'DELETE',
-    headers: {
-      "Authorization": `Token token=${store.user.token}`
-    },
-  });
-};
-
-module.exports = {
-  signUp,
-  signIn,
-  changePassword,
-  signOut,
-};
- 64  assets/scripts/auth/events.js
-@@ -0,0 +1,64 @@
-'use strict';
-
-const getFormFields = require(`../../../lib/get-form-fields`);
-
-const api = require('./api');
-const ui = require('./ui');
-const store = require('../store');
-
+// run when sign up button is clicked
 const onSignUp = function (event) {
-  event.preventDefault();
-  let data = getFormFields(event.target);
+  // prevent page refresh
+  event.preventDefault()
+  // capture user credentials from form and send to server
+  const data = getFormFields(event.target)
   api.signUp(data)
-    .then(ui.success)
-    .catch(ui.failure)
-    ;
-};
+    // if signup is successful, immediately run signIn using same credentials
+    .then(() => { return api.signIn(data) })
+    // use the signInSuccess function if that works
+    .then(ui.signInSuccess)
+    // if signup was not successful, use signUpError
+    .catch(ui.signUpError)
+}
 
+// SIGN IN expected responses:
+// * successful: JSON as follows...
+// {
+//   "user": {
+//     "id": 1,
+//     "email": "an@example.email",
+//     "token": "an example authentication token"
+//   }
+// }
+// * unsuccessful: HTTP Status of 401 Unauthorized (empty body)
+
+// run when sign in button is clicked
 const onSignIn = function (event) {
-  event.preventDefault();
-  let data = getFormFields(event.target);
+  // prevent page refresh
+  event.preventDefault()
+  // capture user credentials from form and send to server
+  const data = getFormFields(event.target)
   api.signIn(data)
-    .then((response) => {
-      store.user = response.user;
-      return store.user;
-    })
-    .then(ui.success)
-    .then(() => {
-      console.log(store);
-    })
-    .catch(ui.failure)
-    ;
-};
+    .then(ui.signInSuccess)
+    .catch(ui.signInError)
+}
 
+// CHANGE PASSWORD expected responses:
+// * successful: HTTP status of 204 No Content (no body)
+// * unsuccessful: HTTP status of 400 Bad Request (no body)
+
+// run when change password button is clicked
 const onChangePassword = function (event) {
-  event.preventDefault();
-  let data = getFormFields(event.target);
+  // prevent page refresh
+  event.preventDefault()
+  // capture user credentials from form and send to server
+  const data = getFormFields(event.target)
   api.changePassword(data)
-    .then(ui.success)
-    .catch(ui.failure)
-    ;
-};
+    .then(ui.changePasswordSuccess)
+    .catch(ui.changePasswordError)
+}
 
+// SIGN OUT expected responses:
+// * successful: HTTP status of 204 No Content (no body)
+// * unsuccessful: HTTP status of 401 Unauthorized (no body)
+
+// run when sign out button is clicked
 const onSignOut = function (event) {
-  event.preventDefault();
+  // prevent page refresh
+  event.preventDefault()
+  // send request to server
   api.signOut()
-    .then(() => {
-      delete store.user;
-      return store;
-    })
-    .then(ui.success)
-    .catch(ui.failure)
-    ;
-};
-
-const addHandlers = () => {
-  $('#sign-up').on('submit', onSignUp);
-  $('#sign-in').on('submit', onSignIn);
-  $('#change-password').on('submit', onChangePassword);
-  $('#sign-out').on('submit', onSignOut);
-};
+    .then(ui.signOutSuccess)
+    .catch(ui.signOutError)
+}
 
 module.exports = {
-  addHandlers,
-};
+  addHandlers: addHandlers,
+  onSignIn: onSignIn,
+  onSignUp: onSignUp,
+  onChangePassword: onChangePassword,
+  onSignOut: onSignOut
+}
