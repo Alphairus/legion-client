@@ -10,12 +10,14 @@ const onSignUp = function (event) {
   event.preventDefault()
   // capture user credentials from form and send to server
   const form = event.target
+
   const data = getFormFields(event.target)
+
   api.signUp(data)
     // // if signup is successful, immediately run signIn using same credentials
     // .then(() => { return api.signIn(data) })
     // use the signInSuccess function if that works
-    .then(ui.signInSuccess)
+    .then(ui.signUpSuccess)
     // if signup was not successful, use signUpError
     .catch(ui.signUpFailure)
 }
