@@ -14,11 +14,11 @@ const signUpFailure = function (error) {
 
 const signInSuccess = function (response) {
   $('#message').text('Logged in!')
-  console.log(store);
+  console.log(store)
   // "Store" the user; create a new key on the 'store' object;
   // give that key a value of response.user
   store.user = response.user
-  console.log(store);
+  console.log(store)
 
   // Hide before login
   $('.before-login').hide()
@@ -57,7 +57,7 @@ const logoutSuccess = function () {
 
 const logoutFailure = function (error) {
   $('#message').text('Logout Error: ' + error)
-  console.log('error is:' + error);
+  console.log('error is:' + error)
 }
 
 module.exports = {
