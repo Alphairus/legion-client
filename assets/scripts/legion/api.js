@@ -25,7 +25,7 @@ const index = function () {
   })
 }
 
-const show = function (gameData) {
+const show = function (legionData) {
   return $.ajax({
     url: config.apiUrl + '/legion/' + legionData.legion.id,
     method: 'GET',
@@ -35,7 +35,7 @@ const show = function (gameData) {
   })
 }
 
-const destroy = function (gameData) {
+const destroy = function (legionData) {
   return $.ajax({
     url: config.apiUrl + '/legion/' + legionData.legion.id,
     method: 'DELETE',
@@ -45,7 +45,7 @@ const destroy = function (gameData) {
   })
 }
 
-const update = function (gameData) {
+const update = function (legionData) {
   return $.ajax({
     url: config.apiUrl + '/legion/' + legionData.legion.id,
     method: 'PATCH',

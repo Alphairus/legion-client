@@ -12,7 +12,7 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>Speedrun Tracker</h1>
+      <h1>creativeblock</h1>
       <p id="message"></p>
 
       <div class="before-login">
@@ -33,41 +33,41 @@
       </div>
 
       <div class="after-login">
-        <div class="game-display"></div>
+        <div class="legion-display"></div>
 
-        <form id="games-index">
-          <button type="submit">Show all your Games</button>
+        <form id="legions-index">
+          <button type="submit">Show all your Legions</button>
         </form>
 
-        <h3>Get a Game</h3>
-        <form id="game-show">
-          <input type="text" name="game[id]" placeholder="Game ID Here">
-          <input type="submit" value="Get Game">
+        <h3>Get a Legion</h3>
+        <form id="legion-show">
+          <input type="text" name="legion[id]" placeholder="Legion ID Here">
+          <input type="submit" value="Get Legion">
         </form>
 
-        <h3>Add a new Game</h3>
-        <form id="game-create">
-          <input type="text" name="game[title]" placeholder="Game title">
-          <input type="text" name="game[releaseDate]" placeholder="Release date">
-          <input type="text" name="game[genre]" placeholder="Genre">
-          <input type="text" name="game[platform]" placeholder="Platform">
-          <button type="submit">Add Game</button>
+        <h3>Add a new Legion</h3>
+        <form id="legion-create">
+          <input type="text" name="legion[title]" placeholder="legion title">
+          <input type="text" name="legion[releaseDate]" placeholder="Release date">
+          <input type="text" name="legion[genre]" placeholder="Genre">
+          <input type="text" name="legion[platform]" placeholder="Platform">
+          <button type="submit">Add legion</button>
         </form>
 
-        <h3>Remove a Game</h3>
-        <form id="game-destroy">
-          <input type="text" name="game[id]" placeholder="Game ID">
-          <button type="submit">Delete game</button>
+        <h3>Remove a legion</h3>
+        <form id="legion-destroy">
+          <input type="text" name="legion[id]" placeholder="legion ID">
+          <button type="submit">Delete legion</button>
         </form>
 
-        <h3>Edit a Game</h3>
-        <form id="game-update">
-          <input type="text" name="game[id]" placeholder="Game ID">
-          <input type="text" name="game[title]" placeholder="Game title">
-          <input type="text" name="game[releaseDate]" placeholder="Release date">
-          <input type="text" name="game[genre]" placeholder="Genre">
-          <input type="text" name="game[platform]" placeholder="Platform">
-          <button type="submit">Edit Game</button>
+        <h3>Edit a legion</h3>
+        <form id="legion-update">
+          <input type="text" name="legion[id]" placeholder="legion ID">
+          <input type="text" name="legion[title]" placeholder="legion title">
+          <input type="text" name="legion[releaseDate]" placeholder="Release date">
+          <input type="text" name="legion[genre]" placeholder="Genre">
+          <input type="text" name="legion[platform]" placeholder="Platform">
+          <button type="submit">Edit Legion</button>
         </form>
 
         <h5>Change Password</h5>
@@ -77,110 +77,9 @@
           <button type="submit">Change Password</button>
         </form>
 
-        <form id="logout">
-          <button type="submit">Log out</button>
+        <form id="sign-out">
+          <button type="submit">sign out</button>
         </form>
       </div>
     </body>
 </html>
-    <!-- <body class="container-fluid">
-      <h1>Legion</h1>
-      <p id="message"></p>
-
-       <nav class="navbar navbar-light bg-light">
-         <span class="navbar-brand">Choose Your Side</span>
-         <form class="form-inline justify-content-end">
-           <button class="sign-out hidden btn btn-outline-success" type="button">Sign Out</button>
-           <button class="change-password hidden btn btn-outline-success" data-toggle="modal" data-target="#changePasswordModal" type="button">Change Password</button>
-           <button class="sign-in btn btn-outline-success" data-toggle="modal" data-target="#signInModal" type="button">Sign In</button>
-           <button class="sign-up btn btn-outline-success" data-toggle="modal" data-target="#signUpModal" type="button">Sign Up</button>
-         </form>
-       </nav>
-
-       <main>
-         <p class="auth-alert-main"></p>
-         <p id="message"></p>
-       </main>
-       <footer class="row">
-         <p><em>Built by <a href="https://github.com/Alphairus">Conner McAuliffe</a></em></p>
-       </footer> -->
-
-       <!-- CHANGE PASSWORD Modal -->
-       <!-- <div class="modal fade" id="changePasswordModal" tabindex="-1" role="dialog" aria-labelledby="changePasswordModalLabel" aria-hidden="true">
-         <div class="modal-dialog" role="document">
-           <div class="modal-content">
-             <div class="modal-header">
-               <h5 class="modal-title" id="changePasswordModalLabel">Change Password</h5>
-               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                 <span aria-hidden="true">&times;</span>
-               </button>
-             </div>
-             <div class="modal-body">
-               <form id="change-password-form">
-                 <input name="passwords[old]" placeholder='Old Password' type='password' required/>
-                 <input name="passwords[new]" placeholder='New Password' type='password' required/>
-               </form>
-               <p class="auth-alert-modal"></p>
-             </div>
-             <div class="modal-footer">
-               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-               <button class="btn btn-primary" type="submit" form="change-password-form">Change Password</button>
-               <p class="auth-alert"></p>
-             </div>
-           </div>
-         </div>
-       </div> -->
-
-       <!-- SIGN IN Modal -->
-       <!-- <div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="signInModalLabel" aria-hidden="true">
-         <div class="modal-dialog" role="document">
-           <div class="modal-content">
-             <div class="modal-header">
-               <h5 class="modal-title" id="signInModalLabel">Sign In</h5>
-               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                 <span aria-hidden="true">&times;</span>
-               </button>
-             </div>
-             <div class="modal-body">
-               <form id="signin-form">
-                 <input name="credentials[email]" placeholder='Email' type='text' required/>
-                 <input name="credentials[password]" placeholder='Password' type='password' required/>
-               <p class="auth-alert-modal"></p>
-               </form>
-             </div>
-             <div class="modal-footer">
-               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-               <button class="btn btn-primary" type="submit" form="signin-form">Sign In</button>
-             </div>
-           </div>
-         </div>
-       </div> -->
-
-       <!-- SIGN UP Modal -->
-       <!-- <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="signUpModalLabel" aria-hidden="true">
-         <div class="modal-dialog" role="document">
-           <div class="modal-content">
-             <div class="modal-header">
-               <h5 class="modal-title" id="signUpModalLabel">Sign Up</h5>
-               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                 <span aria-hidden="true">&times;</span>
-               </button>
-             </div>
-             <div class="modal-body">
-               <form id="sign-up">
-                 <input name="credentials[email]" placeholder='Email' type='text' required/>
-                 <input name="credentials[password]" placeholder='Password' type='password' required/>
-                 <input name="credentials[password_confirmation]" placeholder='Password Confirmation' type='password' required/>
-               </form>
-               <p class="auth-alert-modal"></p>
-               </div>
-               <div class="modal-footer">
-                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                 <button class="btn btn-primary" type="submit" form="signup-form">Sign Up</button>
-               </div>
-           </div>
-         </div>
-       </div>
-   </body>
-    </body>
-</html> -->
