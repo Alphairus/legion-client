@@ -3,50 +3,70 @@
 const store = require('./../store')
 
 // The ajax function's .then will pass this as a response object
-const signUpSuccess = function () {
-  $('#message').text('Account successfully created!')
+const onSignUp = function () {
+  $('#signUpModalLabel').text('Account successfully created!')
+  $('form').trigger('reset')
 }
 
 // The .catch will pass this as error object
-const signUpFailure = function (error) {
+const onSignUpFailure = function (error) {
   $('#message').text('Sign up failed, error: ' + error.statusText)
 }
 
-const signInSuccess = function (response) {
+const onSignIn = function (response) {
   $('#message').text('Logged in!')
-  console.log(store)
   // "Store" the user; create a new key on the 'store' object;
   // give that key a value of response.user
   store.user = response.user
-  console.log(store)
+  $('form').trigger('reset')
 
-  // Hide before login
-  $('.before-login').hide()
-  // Show after login
-  $('.after-login').show()
+  if (response) {
+    $('.auth').show()
+    $('.unauth').hide()
+    $('.close').trigger('click')
+    $('form').trigger('reset')
+    $('.top_bar h2').text("Welcome " + store.user.username + "!")
+  }
 }
 
-const signInFailure = function (error) {
+  // Hide before login
+  // $('.before-login').hide()
+  // Show after login
+  // $('.after-login').show()
+
+
+const onSignOut = function () {
+  store.user = null
+  $('.unauth').show()
+  $('.auth').hide()
+}
+
+const onsignInFailure = function (error) {
   $('#message').text('Sign in failed, error: ' + error.responseJSON.message)
 }
 
+const onFailure = function () {
+  $('.top_bar h2').text("We are sorry, but an error occurred! Please Try Again.");
+}
+
+
 // Success gives 204 'no content' error so there is no response object
-const changePasswordSuccess = function () {
+const onChangePassword = function () {
   $('#message').text('Changed password successfully')
   $('form').trigger('reset')
 }
 
-const changePasswordFailure = function (error) {
+const onChangePasswordFailure = function (error) {
   $('#message').text('Change password failed with error ' + error.responseJSON.message)
 }
 
-const logoutSuccess = function () {
+const onLogout = function () {
   $('#message').text('Logged out')
 
   // Hide after login
-  $('.after-login').hide()
+  // $('.after-login').hide()
   // Show before login
-  $('.before-login').show()
+  // $('.before-login').show()
 
   // VERY IMPORTANT TO DELETE TOKEN
   store.user = null
@@ -55,18 +75,18 @@ const logoutSuccess = function () {
   $('form').trigger('reset')
 }
 
-const logoutFailure = function (error) {
+const onLogoutFailure = function (error) {
   $('#message').text('Logout Error: ' + error)
   console.log('error is:' + error)
 }
 
 module.exports = {
-  signUpSuccess,
-  signUpFailure,
-  signInSuccess,
-  signInFailure,
-  changePasswordSuccess,
-  changePasswordFailure,
-  logoutSuccess,
-  logoutFailure
+  onSignUp,
+  onSignIn,
+  onLogOut,
+  onChangePassword,
+  onFailure,
+  onSignUpFailure,
+  onChangePasswordFailure,
+  onLogoutFailure
 }

@@ -12,10 +12,17 @@ $(() => {
   $('#sign-up').on('submit', authEvents.onSignUp)
   $('#sign-in').on('submit', authEvents.onSignIn)
   $('#change-password').on('submit', authEvents.onChangePassword)
-  $('#sign-out').on('submit', authEvents.onSignOut)
-  $('#legion-create').on('submit', legionEvents.onCreateLegion)
-  $('#legion-index').on('submit', legionEvents.onShowLegion)
-  $('#legion-show').on('submit', legionEvents.onGetLegion)
-  $('#legion-destroy').on('submit', legionEvents.onDestroyLegion)
-  $('#legion-update').on('submit', legionEvents.onUpdateLegion)
+  $('#log-out').on('submit', authEvents.onLogOut)
+  // App
+  $('#createLegion').on('submit', legionEvents.onCreateLegion)
+  $('#updateLegion').on('submit', legionEvents.onUpdateLegion)
+  $('#destroyLegion').on('submit', legionEvents.onDestroyLegion)
+  $('#searchLegion').on('submit', legionEvents.onSearchLegion)
+
+  $('#createLegionButton').on('click', legionEvents.onCreateLegionClick)
+  $('#updateLegionButton').on('click', legionEvents.onUpdateLegionClick)
+  $('#destroyLegionButton').on('click', legionEvents.onDeleteLegionClick)
+  $('#indexLegionButton').on('click', legionEvents.onIndexLegionClick)
+  $('#searchLegionButton').on('click', legionEvents.onSearchLegionClick)
+
 })

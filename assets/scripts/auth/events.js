@@ -50,6 +50,10 @@ const onChangePassword = function (event) {
     .catch(ui.changePasswordFailure)
 }
 
+const onChangePasswordClick = function (event) {
+  $('#changePasswordModalLabel').text('Change Password')
+}
+
 // SIGN OUT expected responses:
 // * successful: HTTP status of 204 No Content (no body)
 // * unsuccessful: HTTP status of 401 Unauthorized (no body)
@@ -58,10 +62,12 @@ const onChangePassword = function (event) {
 const onSignOut = function (event) {
   // prevent page refresh
   event.preventDefault()
+
+  $('.top_bar h2').html("Log Out Success. Have a Great Day!")
   // send request to server
   api.signOut()
     .then(ui.signOutSuccess)
-    .catch(ui.signOutFailure)
+    .catch(ui.onFailure)
 }
 
 module.exports = {
