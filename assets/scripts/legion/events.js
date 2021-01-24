@@ -57,7 +57,7 @@ const onIndexLegion = function (event) {
 const onSearchLegion = function (event) {
   event.preventDefault()
 
-  const data = getFormFields(event.target))
+  const data = getFormFields(event.target)
 
   api.searchLegion(legionData)
     .then(ui_app.onSearchLegion)
@@ -72,7 +72,7 @@ const onSearchLegion = function (event) {
 module.exports = {
   onCreateLegion,
   onUpdateLegion,
-  onDeleteLegion,
+  onDestroyLegion,
   onIndexLegion,
   onSearchLegion
   // onCreateLegionClick,

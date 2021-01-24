@@ -3,8 +3,8 @@
 const store = require('./../store')
 
 // The ajax function's .then will pass this as a response object
-const onSignUp = function () {
-  $('#signUpModalLabel').text('Account successfully created!')
+const SignUp = function () {
+  $('#message').text('Account successfully created!')
   $('form').trigger('reset')
 }
 
@@ -18,22 +18,12 @@ const onSignIn = function (response) {
   // "Store" the user; create a new key on the 'store' object;
   // give that key a value of response.user
   store.user = response.user
-  $('form').trigger('reset')
-
-  if (response) {
-    $('.auth').show()
-    $('.unauth').hide()
-    $('.close').trigger('click')
-    $('form').trigger('reset')
-    $('.top_bar h2').text("Welcome " + store.user.username + "!")
-  }
-}
-
   // Hide before login
-  // $('.before-login').hide()
+  $('.before-login').hide()
   // Show after login
-  // $('.after-login').show()
-
+  $('.after-login').show()
+  // $('form').trigger('reset')
+}
 
 const onSignOut = function () {
   store.user = null
@@ -45,11 +35,6 @@ const onsignInFailure = function (error) {
   $('#message').text('Sign in failed, error: ' + error.responseJSON.message)
 }
 
-const onFailure = function () {
-  $('.top_bar h2').text("We are sorry, but an error occurred! Please Try Again.");
-}
-
-
 // Success gives 204 'no content' error so there is no response object
 const onChangePassword = function () {
   $('#message').text('Changed password successfully')
@@ -60,7 +45,7 @@ const onChangePasswordFailure = function (error) {
   $('#message').text('Change password failed with error ' + error.responseJSON.message)
 }
 
-const onLogout = function () {
+const onLogOut = function () {
   $('#message').text('Logged out')
 
   // Hide after login
@@ -85,7 +70,6 @@ module.exports = {
   onSignIn,
   onLogOut,
   onChangePassword,
-  onFailure,
   onSignUpFailure,
   onChangePasswordFailure,
   onLogoutFailure

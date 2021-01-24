@@ -1,4 +1,3 @@
-
 'use strict'
 
 // display a message to the user

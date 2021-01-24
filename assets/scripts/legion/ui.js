@@ -52,7 +52,7 @@ const onIndexLegion = function (response) {
   //   $('.indexBody').append("Code: " + legion.code + "<br>")
   //   $('.indexBody').append("-------------------------------------" + "<br>")
   // })
-}
+
 
 const onDeleteLegion = function (res) {
   $('#message').text("That Legion has been excommunicated, good riddance.");
