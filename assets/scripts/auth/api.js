@@ -19,7 +19,7 @@ const signIn = function (data) {
   })
 }
 
-// API call for change-password
+// API call for change-password Authenticated
 const changePassword = function (data) {
   return $.ajax({
     url: config.apiUrl + '/change-password',
@@ -32,11 +32,10 @@ const changePassword = function (data) {
 }
 
 // API call for sign-out
-const signOut = function (data) {
+const logout = function () {
   return $.ajax({
     url: config.apiUrl + '/sign-out',
     method: 'DELETE',
-    data: data,
     headers: {
       Authorization: 'Bearer ' + store.user.token
     }
@@ -47,5 +46,5 @@ module.exports = {
   signUp,
   signIn,
   changePassword,
-  signOut
+  logout
 }

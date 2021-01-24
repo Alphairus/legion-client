@@ -1,8 +1,8 @@
 'use strict'
 
-const getFormFields = require('../../../lib/get-form-fields')
 const api = require('./api')
 const ui = require('./ui')
+const getFormFields = require('../../../lib/get-form-fields')
 
 // run when sign up button is clicked
 const onSignUp = function (event) {
@@ -11,7 +11,7 @@ const onSignUp = function (event) {
   // capture user credentials from form and send to server
   const form = event.target
 
-  const data = getFormFields(event.target)
+  const data = getFormFields(form)
 
   api.signUp(data)
     // // if signup is successful, immediately run signIn using same credentials
@@ -28,7 +28,7 @@ const onSignIn = function (event) {
   event.preventDefault()
   // capture user credentials from form and send to server
   const form = event.target
-  const data = getFormFields(event.target)
+  const data = getFormFields(form)
   api.signIn(data)
     .then(ui.signInSuccess)
     .catch(ui.signInFailure)
@@ -44,29 +44,29 @@ const onChangePassword = function (event) {
   event.preventDefault()
   // capture user credentials from form and send to server
   const form = event.target
-  const data = getFormFields(event.target)
+  const data = getFormFields(form)
   api.changePassword(data)
     .then(ui.changePasswordSuccess)
     .catch(ui.changePasswordFailure)
 }
 
-const onChangePasswordClick = function (event) {
-  $('#changePasswordModalLabel').text('Change Password')
-}
+// const onChangePasswordClick = function (event) {
+//   $('#changePasswordModalLabel').text('Change Password')
+// }
 
 // SIGN OUT expected responses:
 // * successful: HTTP status of 204 No Content (no body)
 // * unsuccessful: HTTP status of 401 Unauthorized (no body)
 
 // run when sign out button is clicked
-const onSignOut = function (event) {
+const onLogOut = function (event) {
   // prevent page refresh
   event.preventDefault()
 
-  $('.top_bar h2').html("Log Out Success. Have a Great Day!")
+
   // send request to server
-  api.signOut()
-    .then(ui.signOutSuccess)
+  api.logOut()
+    .then(ui.logOutSuccess)
     .catch(ui.onFailure)
 }
 
@@ -74,5 +74,5 @@ module.exports = {
   onSignIn,
   onSignUp,
   onChangePassword,
-  onSignOut
+  onLogOut
 }

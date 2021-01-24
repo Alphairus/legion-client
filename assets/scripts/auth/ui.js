@@ -3,17 +3,17 @@
 const store = require('./../store')
 
 // The ajax function's .then will pass this as a response object
-const SignUp = function () {
+const signUpSuccess = function () {
   $('#message').text('Account successfully created!')
   $('form').trigger('reset')
 }
 
 // The .catch will pass this as error object
-const onSignUpFailure = function (error) {
+const signUpFailure = function (error) {
   $('#message').text('Sign up failed, error: ' + error.statusText)
 }
 
-const onSignIn = function (response) {
+const signInSuccess = function (response) {
   $('#message').text('Logged in!')
   // "Store" the user; create a new key on the 'store' object;
   // give that key a value of response.user
@@ -25,52 +25,48 @@ const onSignIn = function (response) {
   // $('form').trigger('reset')
 }
 
-const onSignOut = function () {
-  store.user = null
-  $('.unauth').show()
-  $('.auth').hide()
-}
-
-const onsignInFailure = function (error) {
+const signInFailure = function (error) {
   $('#message').text('Sign in failed, error: ' + error.responseJSON.message)
 }
 
 // Success gives 204 'no content' error so there is no response object
-const onChangePassword = function () {
+const changePasswordSuccess = function () {
   $('#message').text('Changed password successfully')
   $('form').trigger('reset')
 }
 
-const onChangePasswordFailure = function (error) {
+const changePasswordFailure = function (error) {
   $('#message').text('Change password failed with error ' + error.responseJSON.message)
 }
 
-const onLogOut = function () {
+const logoutSuccess = function () {
   $('#message').text('Logged out')
+  $('#legion-display').text('')
 
   // Hide after login
-  // $('.after-login').hide()
+  $('.after-login').hide()
   // Show before login
-  // $('.before-login').show()
+  $('.before-login').show()
 
-  // VERY IMPORTANT TO DELETE TOKEN
+  //DELETE TOKEN
   store.user = null
 
   // reset form
   $('form').trigger('reset')
 }
 
-const onLogoutFailure = function (error) {
+const logoutFailure = function (error) {
   $('#message').text('Logout Error: ' + error)
   console.log('error is:' + error)
 }
 
 module.exports = {
-  onSignUp,
-  onSignIn,
-  onLogOut,
-  onChangePassword,
-  onSignUpFailure,
-  onChangePasswordFailure,
-  onLogoutFailure
+  signUpSuccess,
+  signUpFailure,
+  signInSuccess,
+  signInFailure,
+  changePasswordSuccess,
+  changePasswordFailure,
+  logoutSuccess,
+  logoutFailure
 }
