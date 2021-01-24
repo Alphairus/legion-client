@@ -25,64 +25,72 @@
           <input placeholder="Email" type="text" name="credentials[email]" />
           <input placeholder="Password" type="password" name="credentials[password]" />
           <input placeholder="Confirm password" type="password" name="credentials[password_confirmation]" />
-          <button type="submit">Sign Up</button>
+          <button type="submit" class="btn">Sign Up</button>
         </form>
 
         <h5>Sign-in</h5>
         <form id="sign-in">
           <input placeholder="Email" type="text" name="credentials[email]" />
           <input placeholder="Password" type="password" name="credentials[password]" />
-          <button type="submit">Sign In</button>
+          <button type="submit" class="btn">Sign In</button>
         </form>
       </div>
 
-      <div class="after-login">
-        <div class="legion-display"></div>
-
+      <div id="buttons">
+        <button id="legionActions" class="btn">Legions</button>
+        <br>
+        <div id="legion-display"></div>
+        <br>
         <form id="legions-index">
-          <button type="submit">Show all the Legions</button>
+          <button type="submit" class="btn">Show all the Legions</button>
         </form>
-
+        <br>
         <h3>Get a Legion</h3>
         <form id="legion-show">
           <input type="text" name="legion[id]" placeholder="Legion ID Here">
-          <input type="submit" value="Get Legion">
+          <input type="submit" value="Get Legion" class="btn">
         </form>
+      </div>
 
+      <div id="legions">
+        <br>
         <h3>Create A New Legion</h3>
         <form id="legion-create">
           <input type="text" name="legion[title]" placeholder="legion title">
           <input type="text" name="legion[loyalty]" placeholder="Loyalty">
           <input type="text" name="legion[homeworld]" placeholder="Homeworld">
           <input type="text" name="legion[primarch]" placeholder="Primarch">
-          <button type="submit">Create legion</button>
+          <button type="submit" class="btn">Create legion</button>
         </form>
-
+        <br>
         <h3>Remove a legion</h3>
         <form id="legion-destroy">
           <input type="text" name="legion[id]" placeholder="legion ID">
-          <button type="submit">Delete legion</button>
+          <button type="submit" class="btn">Delete legion</button>
         </form>
-
+        <br>
         <h3>Edit a legion</h3>
         <form id="legion-update">
           <input type="text" name="legion[title]" placeholder="legion title">
           <input type="text" name="legion[homeworld]" placeholder="Homeworld">
           <input type="text" name="legion[primarch]" placeholder="Primarch">
           <input type="text" name="legion[loyalty]" placeholder="Loyalty">
-          <button type="submit">Edit Legion</button>
-        </form>
-
-        <h5>Change Password</h5>
-        <form id="change-password">
-          <input placeholder="Old Password" type="password" name="passwords[old]" />
-          <input placeholder="New Password" type="password" name="passwords[new]"/>
-          <button type="submit">Change Password</button>
-        </form>
-
-        <form id="logout">
-          <button type="submit">sign out</button>
+          <button type="submit" class="btn">Edit Legion</button>
         </form>
       </div>
+
+        <div id="auth">
+          <br>
+          <h5>Change Password</h5>
+          <form id="change-password">
+            <input placeholder="Old Password" type="password" name="passwords[old]" />
+            <input placeholder="New Password" type="password" name="passwords[new]"/>
+            <button type="submit" class="btn">Change Password</button>
+          </form>
+          <br>
+          <form id="logout">
+            <button type="submit" class="btn">sign out</button>
+          </form>
+        </div>
     </body>
 </html>

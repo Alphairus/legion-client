@@ -1,15 +1,40 @@
 @import '~bootstrap/scss/bootstrap';
 
-.body {
+body {
   background-color: #717e3e;
   font-family: 'Oxanium', cursive;
-
 }
 
-h1, .before-login, .after-login, #message, #legion-display {
+h1, .before-login, #legions, #message, #legion-display, #buttons, #auth {
   text-align: center
 }
 
 h1 {
   border-bottom: 3px solid black;
+}
+
+#auth {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding-bottom: 20px;
+    background-color: #717e3e;
+}
+
+#legions {
+    margin-bottom: 200px;
+}
+
+#legion-display {
+    margin-top: 10px;
+}
+
+#sign-up {
+    margin-bottom: 10px;
+}
+
+.btn {
+    background-color: #ffffff;
+    border: solid black 2px;
 }
