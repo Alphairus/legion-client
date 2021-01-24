@@ -42,17 +42,6 @@ const onIndexLegion = function (response) {
   })
   $('#legion-display').html(legionHTML)
 }
-  // const legionListing = res.legions
-  //
-  // legionListing.forEach(legion => {
-  //   $('.indexBody').append("Search ID: " + legion._id + "<br>")
-  //   $('.indexBody').append("Name: " + legion.name + "<br>")
-  //   $('.indexBody').append("Type: " + legion.type + "<br>")
-  //   $('.indexBody').append("Difficulty: " + legion.difficulty + "<br>")
-  //   $('.indexBody').append("Code: " + legion.code + "<br>")
-  //   $('.indexBody').append("-------------------------------------" + "<br>")
-  // })
-
 
 const onDeleteLegion = function (res) {
   $('#message').text("That Legion has been excommunicated, good riddance.");

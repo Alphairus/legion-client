@@ -9,8 +9,8 @@ const onCreateLegion = function (event) {
   const data = getFormFields(event.target)
 
   api.createlegion(formData)
-    .then(ui_app.onCreateLegion)
-    .catch(ui_app.onFailure)
+    .then(ui.onCreateLegion)
+    .catch(ui.onFailure)
 }
 
 // const onCreateLegionClick = function (event) {
@@ -22,8 +22,8 @@ const onUpdateLegion = function (event) {
   const legionData = getFormFields(event.target)
 
   api.updateLegion(legionData)
-    .then(ui_app.onUpdateLegion)
-    .catch(ui_app.onFailure)
+    .then(ui.onUpdateLegion)
+    .catch(ui.onFailure)
 }
 
 // const onUpdateLegionClick = function (event) {
@@ -36,8 +36,8 @@ const onDestroyLegion = function (event) {
   const legionData = getFormFields(event.target)
 
   api.destroyLegion(legionData)
-    .then(ui_app.onDestroyLegion)
-    .catch(ui_app.onFailure)
+    .then(ui.onDestroyLegion)
+    .catch(ui.onFailure)
 }
 
 // const onDestroyLegionClick = function (event) {
@@ -50,8 +50,8 @@ const onIndexLegion = function (event) {
   const data = getFormFields(event.target)
 
   api.index()
-    .then(ui_app.onIndexLegion)
-    .catch(ui_app.onFailure)
+    .then(ui.onIndexLegion)
+    .catch(ui.onFailure)
 }
 
 const onSearchLegion = function (event) {
@@ -60,14 +60,9 @@ const onSearchLegion = function (event) {
   const data = getFormFields(event.target)
 
   api.searchLegion(legionData)
-    .then(ui_app.onSearchLegion)
-    .catch(ui_app.onFailure)
+    .then(ui.onSearchLegion)
+    .catch(ui.onFailure)
 }
-
-// const onSearchLegionClick = function (event) {
-//   $('#searchLegionModalLabel').html("Search For A Lesson")
-//   $('.search-output p').html("")
-// }
 
 module.exports = {
   onCreateLegion,
@@ -75,8 +70,4 @@ module.exports = {
   onDestroyLegion,
   onIndexLegion,
   onSearchLegion
-  // onCreateLegionClick,
-  // onUpdateLegionClick,
-  // onDeleteLegionClick,
-  // onSearchLegionClick
 };
