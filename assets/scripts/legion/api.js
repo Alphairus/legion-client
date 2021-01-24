@@ -25,7 +25,7 @@ const indexlegion = function () {
   })
 }
 
-const showlegion = function (legionData) {
+const searchlegion = function (legionData) {
   return $.ajax({
     url: config.apiUrl + '/legion/' + legionData.legion.id,
     method: 'GET',
@@ -59,7 +59,7 @@ const updatelegion = function (legionData) {
 module.exports = {
   createlegion,
   indexlegion,
-  showlegion,
+  searchlegion,
   destroylegion,
-  update
+  updatelegion
 }

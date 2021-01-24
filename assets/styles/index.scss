@@ -1,1 +1,14 @@
 @import '~bootstrap/scss/bootstrap';
+
+body {
+    font-family: 'Oxanium', cursive;
+    background-color: #717e3e;
+}
+
+h1, .before-login, .after-login, #message, #legion-display {
+    text-align: center
+}
+
+h1 {
+    border-bottom: 3px solid black;
+}

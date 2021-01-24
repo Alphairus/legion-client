@@ -19,10 +19,10 @@ $(() => {
   $('#destroyLegion').on('submit', legionEvents.onDestroyLegion)
   $('#searchLegion').on('submit', legionEvents.onSearchLegion)
 
-  $('#createLegionButton').on('click', legionEvents.onCreateLegionClick)
-  $('#updateLegionButton').on('click', legionEvents.onUpdateLegionClick)
-  $('#destroyLegionButton').on('click', legionEvents.onDeleteLegionClick)
-  $('#indexLegionButton').on('click', legionEvents.onIndexLegionClick)
-  $('#searchLegionButton').on('click', legionEvents.onSearchLegionClick)
+  // $('#createLegionButton').on('click', legionEvents.onCreateLegionClick)
+  // $('#updateLegionButton').on('click', legionEvents.onUpdateLegionClick)
+  // $('#destroyLegionButton').on('click', legionEvents.onDeleteLegionClick)
+  // $('#indexLegionButton').on('click', legionEvents.onIndexLegionClick)
+  // $('#searchLegionButton').on('click', legionEvents.onSearchLegionClick)
 
 })
