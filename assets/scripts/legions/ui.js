@@ -1,7 +1,5 @@
 'use strict'
 
-const store = require('./../store.js')
-
 const createLegionSuccess = function (response) {
 
   $('#message').text("You made a Legion!")
@@ -38,6 +36,7 @@ const onIndexSuccess = function (response) {
     <p>Primarch: ${currentLegion.primarch}</p>
     <p>ID: ${currentLegion._id}</p>
     `
+    legionsHTML += currentLegionHTML
   })
   if (!legionsHTML) {
     $('#legion-display').text('There are no legions.')
@@ -49,7 +48,7 @@ const onIndexSuccess = function (response) {
 const onShowSuccess = function (legionData) {
   $('#message').text('')
 
-    const gameHTML = `
+    const legionHTML = `
     <h4>${legionData.legion.title}</h4>
     <p>Loyalty: ${legionData.legion.loyalty}</p>
     <p>Homeworld: ${legionData.legion.homeworld}</p>
