@@ -2,8 +2,9 @@
 
 const store = require('./../store.js')
 
-const onCreateLegion = function () {
-  $('#message').html("You made a Legion!")
+const createLegionSuccess = function (response) {
+
+  $('#message').text("You made a Legion!")
 
   const legionHtml = `
   <h3>${response.legion.title}</h3>
@@ -16,51 +17,96 @@ const onCreateLegion = function () {
   $('form').trigger('reset')
 }
 
-const onUpdateLegion = function () {
-  $('#message').html("Legion Updated!")
-  $('#legion-display').text('')
-  $('form').trigger('reset')
+const createLegionFailure = function (error) {
+  $('#message').text('Legion creation failed ' + error.responseJSON.message)
 }
 
-const onIndexLegion = function (response) {
+const onIndexSuccess = function (response) {
   $('#message').text('')
-  // gives object of legions
+  // gives object of all legions
   // make constant for this array
   const legions = response.legions
+  console.log(legions);
   // new empty array
-  let legionHtml = ''
-  // for each legion array, generate HTML and put that HTML in the DOM
+  let legionsHTML = ''
+ // generate HTML and put that HTML in the DOM
   legions.forEach(function (currentLegion) {
-    const currentLegionHtml = `
+    const currentLegionHTML = `
     <h4>${currentLegion.title}</h4>
     <p>Loyalty: ${currentLegion.loyalty}</p>
     <p>Homeworld: ${currentLegion.homeworld}</p>
     <p>Primarch: ${currentLegion.primarch}</p>
     <p>ID: ${currentLegion._id}</p>
     `
-    legionHTML += currentLegionHTML
   })
-  $('#legion-display').html(legionHTML)
+  if (!legionsHTML) {
+    $('#legion-display').text('There are no legions.')
+  } else {
+    $('#legion-display').html(legionHTML)
+  }
 }
 
-const onDeleteLegion = function (res) {
+const onShowSuccess = function (legionData) {
+  $('#message').text('')
+
+    const gameHTML = `
+    <h4>${legionData.legion.title}</h4>
+    <p>Loyalty: ${legionData.legion.loyalty}</p>
+    <p>Homeworld: ${legionData.legion.homeworld}</p>
+    <p>Primarch: ${legionData.legion.primarch}</p>
+    `
+  $('#legion-display').html(legionHTML)
+  $('form').trigger('reset')
+}
+
+// const onCreateLegion = function () {
+//   $('#message').html("You made a Legion!")
+
+const onUpdateSuccess = function () {
+  $('#message').html("Legion Updated!")
+  $('#legion-display').text('')
+  $('form').trigger('reset')
+}
+
+// const onIndexLegion = function (response) {
+//   $('#message').text('')
+//   // gives object of legions
+//   // make constant for this array
+//   const legions = response.legions
+//   // new empty array
+//   let legionHtml = ''
+//   // for each legion array, generate HTML and put that HTML in the DOM
+//   legions.forEach(function (currentLegion) {
+//     const currentLegionHtml = `
+//     <h4>${currentLegion.title}</h4>
+//     <p>Loyalty: ${currentLegion.loyalty}</p>
+//     <p>Homeworld: ${currentLegion.homeworld}</p>
+//     <p>Primarch: ${currentLegion.primarch}</p>
+//     <p>ID: ${currentLegion._id}</p>
+//     `
+//     legionHTML += currentLegionHTML
+//   })
+//   $('#legion-display').html(legionHTML)
+// }
+
+const onDeleteSuccess = function () {
   $('#message').text("That Legion has been excommunicated, good riddance.");
   $('#legion-display').text('')
   $('form').trigger('reset')
 }
 
-const onSearchLegion = function (legionData) {
-  $('#message').text('')
-  const legionHtml = `
-    <h4>${currentLegion.title}</h4>
-    <p>Loyalty: ${currentLegion.loyalty}</p>
-    <p>Homeworld: ${currentLegion.homeworld}</p>
-    <p>Primarch: ${currentLegion.primarch}</p>
-    <p>ID: ${currentLegion._id}</p>
-  `
-  $('#legion-display').html(legionHTML)
-  $('form').trigger('reset')
-}
+// const onSearchLegion = function (legionData) {
+//   $('#message').text('')
+//   const legionHtml = `
+//     <h4>${currentLegion.title}</h4>
+//     <p>Loyalty: ${currentLegion.loyalty}</p>
+//     <p>Homeworld: ${currentLegion.homeworld}</p>
+//     <p>Primarch: ${currentLegion.primarch}</p>
+//     <p>ID: ${currentLegion._id}</p>
+//   `
+//   $('#legion-display').html(legionHTML)
+//   $('form').trigger('reset')
+// }
   // const legionListing = res.legion
   //
   // legionListing.forEach(legion => {
@@ -71,14 +117,15 @@ const onSearchLegion = function (legionData) {
   // })
 
 const onFailure = function () {
-  $('.top_bar h2').html("Critical Error<br>If you see this, something odd happened!<br>The API may be unavailable!");
+  $('#message').text('Critical Error ': error.responseJSON.message)
 }
 
 module.exports = {
-  onCreateLegion,
-  onUpdateLegion,
-  onIndexLegion,
-  onDeleteLegion,
-  onSearchLegion,
-  onFailure
-};
+  createLegionSuccess,
+  createLegionFailure,
+  onIndexSuccess,
+  onShowSuccess,
+  onDeleteSuccess,
+  onUpdateSuccess,
+  onError
+}

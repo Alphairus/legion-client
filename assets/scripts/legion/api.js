@@ -3,7 +3,7 @@
 const store = require('./../store')
 const config = require('./../config')
 
-const createlegion = function (data) {
+const create = function (legionData) {
   return $.ajax({
     url: config.apiUrl + '/legion',
     method: 'POST',
@@ -15,7 +15,7 @@ const createlegion = function (data) {
   })
 }
 
-const indexlegion = function () {
+const index = function () {
   return $.ajax({
     url: config.apiUrl + '/legion',
     method: 'GET',
@@ -25,7 +25,7 @@ const indexlegion = function () {
   })
 }
 
-const searchlegion = function (legionData) {
+const show = function (legionData) {
   return $.ajax({
     url: config.apiUrl + '/legion/' + legionData.legion.id,
     method: 'GET',
@@ -35,7 +35,7 @@ const searchlegion = function (legionData) {
   })
 }
 
-const destroylegion = function (legionData) {
+const destroy = function (legionData) {
   return $.ajax({
     url: config.apiUrl + '/legion/' + legionData.legion.id,
     method: 'DELETE',
@@ -45,7 +45,7 @@ const destroylegion = function (legionData) {
   })
 }
 
-const updatelegion = function (legionData) {
+const update = function (legionData) {
   return $.ajax({
     url: config.apiUrl + '/legion/' + legionData.legion.id,
     method: 'PATCH',
@@ -57,9 +57,9 @@ const updatelegion = function (legionData) {
 }
 
 module.exports = {
-  createlegion,
-  indexlegion,
-  searchlegion,
-  destroylegion,
-  updatelegion
+  create,
+  index,
+  show,
+  destroy,
+  update
 }

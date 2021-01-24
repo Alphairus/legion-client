@@ -1,16 +1,18 @@
+'use strict'
+
 const api = require('./api')
 const ui = require('./ui')
-const store = require('./../store')
+// const store = require('./../store')
 const getFormFields = require('./../../../lib/get-form-fields.js')
 
-const onCreateLegion = function (event) {
+const onLegionCreate = function (event) {
   event.preventDefault()
 
   const data = getFormFields(event.target)
 
-  api.createlegion(formData)
-    .then(ui.onCreateLegion)
-    .catch(ui.onFailure)
+  api.create(data)
+    .then(ui.createLegionSuccess)
+    .catch(ui.createLegionFailure)
 }
 
 // const onCreateLegionClick = function (event) {
@@ -21,8 +23,8 @@ const onUpdateLegion = function (event) {
   event.preventDefault()
   const legionData = getFormFields(event.target)
 
-  api.updateLegion(legionData)
-    .then(ui.onUpdateLegion)
+  api.update(legionData)
+    .then(ui.onUpdateSuccess)
     .catch(ui.onFailure)
 }
 
@@ -35,8 +37,8 @@ const onDestroyLegion = function (event) {
 
   const legionData = getFormFields(event.target)
 
-  api.destroyLegion(legionData)
-    .then(ui.onDestroyLegion)
+  api.destroy(legionData)
+    .then(ui.onDeleteSuccess)
     .catch(ui.onFailure)
 }
 
@@ -44,30 +46,28 @@ const onDestroyLegion = function (event) {
 //   $('#deleteLegionModalLabel').html("Destroy A Legion")
 // }
 
-const onIndexLegion = function (event) {
+const onShowLegions = function (event) {
   event.preventDefault()
 
-  const data = getFormFields(event.target)
-
   api.index()
-    .then(ui.onIndexLegion)
+    .then(ui.onIndexSuccess)
     .catch(ui.onFailure)
 }
 
-const onSearchLegion = function (event) {
+const onGetLegion = function (event) {
   event.preventDefault()
 
-  const data = getFormFields(event.target)
+  const legiondata = getFormFields(event.target)
 
-  api.searchLegion(legionData)
-    .then(ui.onSearchLegion)
+  api.show(legionData)
+    .then(ui.onShowSuccess)
     .catch(ui.onFailure)
 }
 
 module.exports = {
-  onCreateLegion,
-  onUpdateLegion,
+  onLegionCreate,
+  onShowLegion,
+  onGetLegion,
   onDestroyLegion,
-  onIndexLegion,
-  onSearchLegion
-};
+  onUpdateLegion
+}
