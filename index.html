@@ -10,7 +10,11 @@
       <!-- Do not add `script` tags-->
       <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Oxanium&display=swap');
+      </style>
     </head>
+
     <body>
       <h1>Legiones Astartes</h1>
       <p id="message"></p>
@@ -36,7 +40,7 @@
         <div class="legion-display"></div>
 
         <form id="legions-index">
-          <button type="submit">Show all your Legions</button>
+          <button type="submit">Show all the Legions</button>
         </form>
 
         <h3>Get a Legion</h3>
@@ -45,13 +49,13 @@
           <input type="submit" value="Get Legion">
         </form>
 
-        <h3>Add a new Legion</h3>
+        <h3>Create A New Legion</h3>
         <form id="legion-create">
           <input type="text" name="legion[title]" placeholder="legion title">
+          <input type="text" name="legion[loyalty]" placeholder="Loyalty">
           <input type="text" name="legion[homeworld]" placeholder="Homeworld">
           <input type="text" name="legion[primarch]" placeholder="Primarch">
-          <input type="text" name="legion[loyalty]" placeholder="Loyalty">
-          <button type="submit">Add legion</button>
+          <button type="submit">Create legion</button>
         </form>
 
         <h3>Remove a legion</h3>

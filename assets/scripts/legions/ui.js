@@ -59,35 +59,11 @@ const onShowSuccess = function (legionData) {
   $('form').trigger('reset')
 }
 
-// const onCreateLegion = function () {
-//   $('#message').html("You made a Legion!")
-
 const onUpdateSuccess = function () {
   $('#message').html("Legion Updated!")
   $('#legion-display').text('')
   $('form').trigger('reset')
 }
-
-// const onIndexLegion = function (response) {
-//   $('#message').text('')
-//   // gives object of legions
-//   // make constant for this array
-//   const legions = response.legions
-//   // new empty array
-//   let legionHtml = ''
-//   // for each legion array, generate HTML and put that HTML in the DOM
-//   legions.forEach(function (currentLegion) {
-//     const currentLegionHtml = `
-//     <h4>${currentLegion.title}</h4>
-//     <p>Loyalty: ${currentLegion.loyalty}</p>
-//     <p>Homeworld: ${currentLegion.homeworld}</p>
-//     <p>Primarch: ${currentLegion.primarch}</p>
-//     <p>ID: ${currentLegion._id}</p>
-//     `
-//     legionHTML += currentLegionHTML
-//   })
-//   $('#legion-display').html(legionHTML)
-// }
 
 const onDeleteSuccess = function () {
   $('#message').text("That Legion has been excommunicated, good riddance.");
@@ -95,29 +71,8 @@ const onDeleteSuccess = function () {
   $('form').trigger('reset')
 }
 
-// const onSearchLegion = function (legionData) {
-//   $('#message').text('')
-//   const legionHtml = `
-//     <h4>${currentLegion.title}</h4>
-//     <p>Loyalty: ${currentLegion.loyalty}</p>
-//     <p>Homeworld: ${currentLegion.homeworld}</p>
-//     <p>Primarch: ${currentLegion.primarch}</p>
-//     <p>ID: ${currentLegion._id}</p>
-//   `
-//   $('#legion-display').html(legionHTML)
-//   $('form').trigger('reset')
-// }
-  // const legionListing = res.legion
-  //
-  // legionListing.forEach(legion => {
-  //   $('.search-output p').append("Name: " + legion.name + "<br>")
-  //   $('.search-output p').append("Type: " + legion.type + "<br>")
-  //   $('.search-output p').append("Difficulty: " + legion.difficulty + "<br>")
-  //   $('.search-output p').append("Code: " + legion.code + "<br>")
-  // })
-
 const onFailure = function () {
-  $('#message').text('Critical Error ': error.responseJSON.message)
+  $('#message').text('Critical Error ' + error.responseJSON.message)
 }
 
 module.exports = {
@@ -127,5 +82,5 @@ module.exports = {
   onShowSuccess,
   onDeleteSuccess,
   onUpdateSuccess,
-  onError
+  onFailure
 }

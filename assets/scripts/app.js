@@ -14,15 +14,9 @@ $(() => {
   $('#change-password').on('submit', authEvents.onChangePassword)
   $('#log-out').on('submit', authEvents.onLogOut)
   // App
-  $('#createLegion').on('submit', legionEvents.onCreateLegion)
-  $('#updateLegion').on('submit', legionEvents.onUpdateLegion)
-  $('#destroyLegion').on('submit', legionEvents.onDestroyLegion)
-  $('#searchLegion').on('submit', legionEvents.onSearchLegion)
-
-  // $('#createLegionButton').on('click', legionEvents.onCreateLegionClick)
-  // $('#updateLegionButton').on('click', legionEvents.onUpdateLegionClick)
-  // $('#destroyLegionButton').on('click', legionEvents.onDeleteLegionClick)
-  // $('#indexLegionButton').on('click', legionEvents.onIndexLegionClick)
-  // $('#searchLegionButton').on('click', legionEvents.onSearchLegionClick)
-
+  $('#legion-create').on('submit', legionEvents.onLegionCreate)
+  $('#legions-index').on('submit', legionEvents.onShowLegions)
+  $('#legion-show').on('submit', legionEvents.onGetLegion)
+  $('#legion-destroy').on('submit', legionEvents.onDestroyLegion)
+  $('#legion-update').on('submit', legionEvents.onUpdateLegion)
 })

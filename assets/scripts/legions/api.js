@@ -7,8 +7,7 @@ const create = function (legionData) {
   return $.ajax({
     url: config.apiUrl + '/legion',
     method: 'POST',
-    // data: data
-    data,
+    data: legionData,
     headers: {
       Authorization: 'Bearer ' + store.user.token
     }
