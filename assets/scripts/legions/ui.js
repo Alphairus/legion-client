@@ -4,14 +4,15 @@ const createLegionSuccess = function (response) {
 
   $('#message').text("You made a Legion!")
 
-  const legionHtml = `
+  const legionHTML = `
   <h3>${response.legion.title}</h3>
   <p>Loyalty: ${response.legion.loyalty}</p>
   <p>Homeworld: ${response.legion.homeworld}</p>
   <p>Primarch: ${response.legion.primarch}</p>
   <p>ID: ${response.legion._id}</p>
   `
-  $('#legion-display').html(legionHtml)
+
+  $('#legion-display').html(legionHTML)
   $('form').trigger('reset')
 }
 
@@ -41,18 +42,18 @@ const onIndexSuccess = function (response) {
   if (!legionsHTML) {
     $('#legion-display').text('There are no legions.')
   } else {
-    $('#legion-display').html(legionHTML)
+    $('#legion-display').html(legionsHTML)
   }
 }
 
 const onShowSuccess = function (legionData) {
   $('#message').text('')
-
-    const legionHTML = `
-    <h4>${legionData.legion.title}</h4>
+  const legionHTML = `
+    <h4>Title: ${legionData.legion.title}</h4>
     <p>Loyalty: ${legionData.legion.loyalty}</p>
     <p>Homeworld: ${legionData.legion.homeworld}</p>
     <p>Primarch: ${legionData.legion.primarch}</p>
+    <p>ID: ${legionData.legion._id}</p>
     `
   $('#legion-display').html(legionHTML)
   $('form').trigger('reset')
@@ -73,6 +74,9 @@ const onDeleteSuccess = function () {
 const onFailure = function () {
   $('#message').text('Critical Error ' + error.responseJSON.message)
 }
+
+const legionHTML = `
+`
 
 module.exports = {
   createLegionSuccess,

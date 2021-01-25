@@ -14,14 +14,14 @@ const signUpFailure = function (error) {
 }
 
 const signInSuccess = function (response) {
-  $('#message').text('Logged in!')
+  $('#message').text('Log in successful!')
   // "Store" the user; create a new key on the 'store' object;
   // give that key a value of response.user
   store.user = response.user
-  // Hide before login
+  // Show/Hide on sign in
   $('.before-login').hide()
-  // Show after login
-  $('.after-login').show()
+  $('#buttons').show()
+  $('#auth').show()
   // $('form').trigger('reset')
 }
 
@@ -32,6 +32,7 @@ const signInFailure = function (error) {
 // Success gives 204 'no content' error so there is no response object
 const changePasswordSuccess = function () {
   $('#message').text('Changed password successfully')
+  $('#legion-display').text('')
   $('form').trigger('reset')
 }
 
@@ -44,7 +45,9 @@ const logoutSuccess = function () {
   $('#legion-display').text('')
 
   // Hide after login
-  $('.after-login').hide()
+  $('#buttons').hide()
+  $('#legions').hide()
+  $('#auth').hide()
   // Show before login
   $('.before-login').show()
 
@@ -57,7 +60,6 @@ const logoutSuccess = function () {
 
 const logoutFailure = function (error) {
   $('#message').text('Logout Error: ' + error)
-  console.log('error is:' + error)
 }
 
 module.exports = {

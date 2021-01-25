@@ -8,7 +8,9 @@ const legionEvents = require('./legions/events.js')
 // require('./example')
 
 $(() => {
-  $('.after-login').hide()
+  $('#legions').hide()
+  $('#auth').hide()
+  $('#buttons').hide()
   $('#sign-up').on('submit', authEvents.onSignUp)
   $('#sign-in').on('submit', authEvents.onSignIn)
   $('#change-password').on('submit', authEvents.onChangePassword)
@@ -19,4 +21,8 @@ $(() => {
   $('#legion-show').on('submit', legionEvents.onGetLegion)
   $('#legion-destroy').on('submit', legionEvents.onDestroyLegion)
   $('#legion-update').on('submit', legionEvents.onUpdateLegion)
+  $('#legionActions').click(function() {
+    $('#legions').show()
+    $('#legion-display').text('')
+ })
 })
