@@ -17040,7 +17040,7 @@ var onShowSuccess = function onShowSuccess(legionData) {
 };
 
 var onUpdateSuccess = function onUpdateSuccess() {
-  $('#message').html("Legion Updated!");
+  $('#message').text("Legion Updated!");
   $('#legion-display').text('');
   $('form').trigger('reset');
 };
