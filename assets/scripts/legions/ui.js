@@ -60,7 +60,7 @@ const onShowSuccess = function (legionData) {
 }
 
 const onUpdateSuccess = function () {
-  $('#message').html("Legion Updated!")
+  $('#message').text("Legion Updated!")
   $('#legion-display').text('')
   $('form').trigger('reset')
 }
